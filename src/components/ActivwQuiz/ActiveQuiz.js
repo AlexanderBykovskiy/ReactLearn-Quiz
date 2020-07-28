@@ -1,25 +1,27 @@
 import React from 'react';
 import classes from './ActiveQuiz.module.css';
+import AnswerList from './AnswerList/AnswerList';
 
-const ActiveQuiz = () => {
+const ActiveQuiz = ({quiz, totalQuestion, answerState, handleQuestionClick}) => {
+    //console.log('###ActiveQuiz###', props);
     return (
         <div className={classes.activequiz}>
             <p className={classes.question}>
-                <span className={classes.questionText}>
+                <span className={classes.questiontext}>
                     <strong>
-                        1.
+                        {quiz.id}.
                     </strong>&nbsp;
-                    Question
+                    {quiz.question}
                 </span>
                 <span>
-                    2/5
+                {quiz.id}/{totalQuestion}
                 </span>
             </p>
-            <ul>
-                <li>1</li>
-                <li>2</li>
-                <li>3</li>
-            </ul>
+            <AnswerList
+                answers={quiz.answers}
+                answerState={answerState}
+                handleQuestionClick={handleQuestionClick}
+            />
         </div>
     );
 }

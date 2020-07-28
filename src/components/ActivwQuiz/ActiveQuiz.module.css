@@ -11,33 +11,6 @@
     margin: 0 0 2vw;
 }
 
-.activequiz ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-}
-
-.activequiz ul > li {
-    border: 1px solid #efefef;
-    border-radius: 4px;
-    padding: 1vw 1.5vw;
-    margin-bottom: .5vw;
-
-    background-color: rgba(255, 255, 255, 0.4);
-    color: #012a1e;
-
-    transition: background-color 0.25s ease;
-    transition: color 0.1s ease;
-}
-
-.activequiz .questionText {
+.activequiz .question .questiontext {
     font-size: x-large;
-}
-
-.activequiz ul > li:hover {
-    background-color: rgba(255, 255, 255, 0);
-    color: #efefef;
-    cursor: pointer;
 }

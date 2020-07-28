@@ -1,0 +1,28 @@
+
+li.answerItem {
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    padding: 1vw 1.5vw;
+    margin-bottom: .5vw;
+
+    background-color: rgba(255, 255, 255, 0.4);
+    color: #012a1e;
+
+    transition: background-color 0.25s ease;
+    transition: color 0.1s ease;
+}
+
+li.answerItem:hover {
+    background-color: rgba(255, 255, 255, 0);
+    color: #efefef;
+    cursor: pointer;
+}
+li.answerItem.success {
+    background-color: #078600;
+    color:#efefef;
+}
+
+li.answerItem.error {
+    background-color: #A40004;
+    color:#efefef;
+}
