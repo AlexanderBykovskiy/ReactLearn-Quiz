@@ -35,16 +35,18 @@ class Quiz extends React.Component {
 
     handleQuestionClick = (id) => {
 
-
+        if (this.state.answerState) {
+            const key = Object.keys(this.state.answerState)[0];
+            if (this.state.answerState[key] === 'success') {
+                return;
+            }
+        }
 
         const questionObj = this.state.quiz[this.state.activeQuestion - 1];
-
-
 
         if (id === questionObj.rightAnswer) {
 
             console.log('### Right answer ###');
-
 
             this.setState({
                 'answerState': {
@@ -66,7 +68,6 @@ class Quiz extends React.Component {
                 console.log('### Finished ###');
             }
 
-
         } else {
             this.setState({
                 'answerState': {
@@ -75,8 +76,6 @@ class Quiz extends React.Component {
             });
             console.log('### Wrong answer ###');
         }
-
-
 
     }
 
