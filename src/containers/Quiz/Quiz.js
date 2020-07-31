@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './Quiz.module.css';
 import ActiveQuiz from '../../components/ActivwQuiz/ActiveQuiz';
+import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
 
 class Quiz extends React.Component {
 
@@ -30,23 +31,31 @@ class Quiz extends React.Component {
                 'rightAnswer': 1
             }
         ],
-        'answerState': null
+        'answerState': null,
+        'isFinished': true,
+        'results': {}
     }
 
     handleQuestionClick = (id) => {
 
         if (this.state.answerState) {
             const key = Object.keys(this.state.answerState)[0];
+
             if (this.state.answerState[key] === 'success') {
                 return;
             }
         }
 
         const questionObj = this.state.quiz[this.state.activeQuestion - 1];
+        const results = this.state.results;
 
         if (id === questionObj.rightAnswer) {
 
             console.log('### Right answer ###');
+
+            if (!results[id]) {
+                results[id] = 'success';
+            }
 
             this.setState({
                 'answerState': {
@@ -54,25 +63,32 @@ class Quiz extends React.Component {
                 }
             });
 
-            if (!this.finished()) {
+            const timeout = window.setTimeout(() => {
 
-                const timeout = window.setTimeout(() => {
+                if (!this.finished()) {
+
                     this.setState({
                         'activeQuestion': this.state.activeQuestion + 1,
                         'answerState': null
                     });
-                    window.clearTimeout(timeout);
-                }, 1000);
 
-            } else {
-                console.log('### Finished ###');
-            }
+                } else {
+                    console.log('### Finished ###');
+                    this.setState({
+                        'isFinished': true
+                    });
+                }
+
+                window.clearTimeout(timeout);
+            }, 500);
 
         } else {
+            results[id] = 'error';
             this.setState({
                 'answerState': {
                     [id]: 'error'
-                }
+                },
+                'results': results
             });
             console.log('### Wrong answer ###');
         }
@@ -92,12 +108,20 @@ class Quiz extends React.Component {
             <div className={classes.quiz} >
                 <div className={classes.quizWrapper}>
                     <h1>{this.state.appName}</h1>
-                    <ActiveQuiz
-                        quiz={this.state.quiz[this.state.activeQuestion - 1]}
-                        totalQuestion={this.state.quiz.length}
-                        handleQuestionClick={this.handleQuestionClick}
-                        answerState={this.state.answerState}
-                    />
+                    {
+                        this.state.isFinished
+                            ? <FinishedQuiz
+                                quizList={this.state.quiz}
+                                results={this.state.results}
+                                totalQuestion={this.state.quiz.length}
+                            />
+                            : <ActiveQuiz
+                                quiz={this.state.quiz[this.state.activeQuestion - 1]}
+                                totalQuestion={this.state.quiz.length}
+                                handleQuestionClick={this.handleQuestionClick}
+                                answerState={this.state.answerState}
+                            />
+                    }
                 </div>
             </div>
         );
