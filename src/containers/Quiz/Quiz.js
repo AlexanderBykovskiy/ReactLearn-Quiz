@@ -32,8 +32,17 @@ class Quiz extends React.Component {
             }
         ],
         'answerState': null,
-        'isFinished': true,
+        'isFinished': false,
         'results': {}
+    }
+
+    handleOnRetry = () => {
+        this.setState({
+            'activeQuestion': 1,
+            'answerState': null,
+            'isFinished': false,
+            'results': {}
+        });
     }
 
     handleQuestionClick = (id) => {
@@ -53,8 +62,8 @@ class Quiz extends React.Component {
 
             console.log('### Right answer ###');
 
-            if (!results[id]) {
-                results[id] = 'success';
+            if (!results[questionObj.id]) {
+                results[questionObj.id] = 'success';
             }
 
             this.setState({
@@ -83,7 +92,7 @@ class Quiz extends React.Component {
             }, 500);
 
         } else {
-            results[id] = 'error';
+            results[questionObj.id] = 'error';
             this.setState({
                 'answerState': {
                     [id]: 'error'
@@ -114,6 +123,7 @@ class Quiz extends React.Component {
                                 quizList={this.state.quiz}
                                 results={this.state.results}
                                 totalQuestion={this.state.quiz.length}
+                                onRetry={this.handleOnRetry}
                             />
                             : <ActiveQuiz
                                 quiz={this.state.quiz[this.state.activeQuestion - 1]}

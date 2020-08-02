@@ -1,22 +1,40 @@
 import React from 'react';
 import classes from './FinishedQuiz.module.css';
 
-const FinishedQuiz = ({quizList, results, totalQuestion}) => {
+const FinishedQuiz = ({quizList, results, totalQuestion, onRetry}) => {
+
+    const questions = quizList.map((question, key) => {
+
+        const styles = [
+            'fa',
+            results[question.id] === 'error' ? 'fa-times' : 'fa-check',
+            results[question.id] === 'error' ? classes.error : classes.success
+        ];
+
+        return (
+            <li key={question.id}>
+                <i className={styles.join(' ')}></i>
+                <strong>{key + 1}. </strong>
+                {question.question}
+            </li>
+        );
+    });
+
+    const successCount = Object.keys(results).reduce((total, key) => {
+        if (results[key] === 'success') {
+            total++;
+        }
+        return total;
+    }, 0);
+
     return(
         <div className={classes.finishedquiz}>
             <ul>
-                {quizList.map((question, id) => {
-                    return(
-                        <li>{question[id]}</li>
-                    )
-                })}
-                <li><i className={'fa fa-check success ' + classes.success}></i><strong>1. </strong>Question 1</li>
-                <li><i className={'fa fa-times ' + classes.error}></i><strong>2. </strong>Question 2</li>
-                <li><i className={'fa fa-times'}></i><strong>3. </strong>Question 3</li>
+                {questions}
             </ul>
-            <p>Right 1/{totalQuestion}</p>
+                <p>Right {successCount}/{totalQuestion}</p>
             <div>
-                <button>Repeat</button>
+                <button onClick={onRetry}>Repeat</button>
             </div>
         </div>
     );
