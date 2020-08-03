@@ -1,0 +1,13 @@
+.menutoggle {
+    display: block;
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    width: 2rem;
+    height: 2rem;
+    color: #fff;
+    font-size: 2rem;
+    cursor: pointer;
+
+    transform: all .22s ease-in;
+}

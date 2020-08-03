@@ -1,5 +1,6 @@
 import React from 'react';
 import classes from './FinishedQuiz.module.css';
+import Button from '../UI/Button/Button';
 
 const FinishedQuiz = ({quizList, results, totalQuestion, onRetry}) => {
 
@@ -32,9 +33,10 @@ const FinishedQuiz = ({quizList, results, totalQuestion, onRetry}) => {
             <ul>
                 {questions}
             </ul>
-                <p>Right {successCount}/{totalQuestion}</p>
+                <p className={classes.total}>Right {successCount}/{totalQuestion}</p>
             <div>
-                <button onClick={onRetry}>Repeat</button>
+                <Button caption='Retry' onClickfunction={onRetry} />
+                <Button caption='To quiz list' type='primary' />
             </div>
         </div>
     );
