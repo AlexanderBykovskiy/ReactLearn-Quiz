@@ -9,5 +9,10 @@
     font-size: 2rem;
     cursor: pointer;
 
-    transform: all .22s ease-in;
+    transition: transform 0.2s ease-in;
+    transform: translateX(0rem);
+}
+
+.menutoggle.open {
+    transform: translateX(19rem);
 }
