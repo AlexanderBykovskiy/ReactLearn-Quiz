@@ -24,6 +24,23 @@
     list-style: none;
 }
 
-.drawer ul > li {
+.drawer ul > li a {
+    display: block;
+    text-decoration: none;
+    color: #012a1e;
+    font-size: 1.5rem;
+    border-bottom: 1px dotted #666;
     margin-bottom: 0.5rem;
+    padding-bottom: 0.5rem;
+
+    transition: all 0.2s ease-in;
+}
+
+.drawer ul > li a:hover {
+    color: #00737a;
+}
+
+.drawer ul > li a.active {
+    font-weight: 500;
+    color: #00737a;
 }

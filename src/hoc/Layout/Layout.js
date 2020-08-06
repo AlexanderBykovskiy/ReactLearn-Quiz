@@ -24,7 +24,10 @@ class Layout extends React.Component {
                     isOpen={this.state.menu}
                     handleToggleClick={this.handleToggleClick}
                 />
-                <Drawer isOpen={this.state.menu}/>
+                <Drawer
+                    isOpen={this.state.menu}
+                    handleToggleClick={this.handleToggleClick}
+                />
                 <MenuToggle
                     handleToggleClick={this.handleToggleClick}
                     isOpen={this.state.menu}

@@ -6,42 +6,42 @@ import FinishedQuiz from '../../components/FinishedQuiz/FinishedQuiz';
 class Quiz extends React.Component {
 
     state = {
-        'appName': 'Quiz',
-        'activeQuestion': 1,
-        'quiz': [
+        appName: 'Quiz',
+        activeQuestion: 1,
+        quiz: [
             {
-                'id': 1,
-                'question': 'My question 1',
-                'answers': [
-                    { 'id': 1, 'answer': 'answer 1' },
-                    { 'id': 2, 'answer': 'answer 2' },
-                    { 'id': 3, 'answer': 'answer 3*' },
-                    { 'id': 4, 'answer': 'answer 4' }
+                id: 1,
+                question: 'My question 1',
+                answers: [
+                    { id: 1, answer: 'answer 1' },
+                    { id: 2, answer: 'answer 2' },
+                    { id: 3, answer: 'answer 3*' },
+                    { id: 4, answer: 'answer 4' }
                 ],
-                'rightAnswer': 3
+                rightAnswer: 3
             },
             {
-                'id': 2,
-                'question': 'My question 2',
-                'answers': [
-                    { 'id': 1, 'answer': 'answer 1*' },
-                    { 'id': 2, 'answer': 'answer 2' },
-                    { 'id': 3, 'answer': 'answer 3' }
+                id: 2,
+                question: 'My question 2',
+                answers: [
+                    { id: 1, answer: 'answer 1*' },
+                    { id: 2, answer: 'answer 2' },
+                    { id: 3, answer: 'answer 3' }
                 ],
-                'rightAnswer': 1
+                rightAnswer: 1
             }
         ],
-        'answerState': null,
-        'isFinished': false,
-        'results': {}
+        answerState: null,
+        isFinished: false,
+        results: {}
     }
 
     handleOnRetry = () => {
         this.setState({
-            'activeQuestion': 1,
-            'answerState': null,
-            'isFinished': false,
-            'results': {}
+            activeQuestion: 1,
+            answerState: null,
+            isFinished: false,
+            results: {}
         });
     }
 
@@ -67,7 +67,7 @@ class Quiz extends React.Component {
             }
 
             this.setState({
-                'answerState': {
+                answerState: {
                     [id]: 'success'
                 }
             });
@@ -77,14 +77,14 @@ class Quiz extends React.Component {
                 if (!this.finished()) {
 
                     this.setState({
-                        'activeQuestion': this.state.activeQuestion + 1,
-                        'answerState': null
+                        activeQuestion: this.state.activeQuestion + 1,
+                        answerState: null
                     });
 
                 } else {
                     console.log('### Finished ###');
                     this.setState({
-                        'isFinished': true
+                        isFinished: true
                     });
                 }
 
@@ -94,10 +94,10 @@ class Quiz extends React.Component {
         } else {
             results[questionObj.id] = 'error';
             this.setState({
-                'answerState': {
+                answerState: {
                     [id]: 'error'
                 },
-                'results': results
+                results: results
             });
             console.log('### Wrong answer ###');
         }
