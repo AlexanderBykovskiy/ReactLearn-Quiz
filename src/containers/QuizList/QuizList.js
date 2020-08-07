@@ -21,10 +21,12 @@ class QuizList extends React.Component {
     render() {
         return (
             <div className={classes.quizlist}>
-                <h1>QuizList</h1>
-                <ul>
-                    {this.renderQuizes()}
-                </ul>
+                <div className={classes.quizWrapper}>
+                    <h1>Select your Quiz</h1>
+                    <ol>
+                        {this.renderQuizes()}
+                    </ol>
+                </div>
             </div>
         )
     }

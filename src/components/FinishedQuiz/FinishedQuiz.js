@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './FinishedQuiz.module.css';
 import Button from '../UI/Button/Button';
+import { Link } from 'react-router-dom';
 
 const FinishedQuiz = ({quizList, results, totalQuestion, onRetry}) => {
 
@@ -36,7 +37,9 @@ const FinishedQuiz = ({quizList, results, totalQuestion, onRetry}) => {
                 <p className={classes.total}>Right {successCount}/{totalQuestion}</p>
             <div>
                 <Button caption='Retry' onClickfunction={onRetry} />
-                <Button caption='To quiz list' type='primary' />
+                <Link to="/">
+                    <Button caption='To quiz list' type='primary' />
+                </Link>
             </div>
         </div>
     );

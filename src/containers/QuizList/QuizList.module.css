@@ -1,3 +1,48 @@
 .quizlist {
-    
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    color: #efefef;
+
+    background: #012a1e;
+    background: -moz-linear-gradient(45deg, #012a1e 0%, #00737a 100%);
+    background: -webkit-linear-gradient(45deg, #012a1e 0%, #00737a 100%);
+    background: linear-gradient(45deg, #012a1e 0%, #00737a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#012a1e', endColorstr='#00737a', GradientType=1);
+}
+
+.quizlist h1 {
+    text-align: center;
+}
+
+.quizlist .quizWrapper {
+    width: 60vw;
+    margin: 5vw auto;
+}
+
+.quizlist ol {
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    padding: 2vw 4.5vw;
+}
+
+.quizlist ol li {
+    font-size: 1.4rem;
+    margin-bottom: 1.5rem;
+    font-weight: bold;
+}
+
+.quizlist ol li:last-child {
+    margin-bottom: 0;
+}
+
+.quizlist ol li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: normal;
+    transition: all 0.1s ease-in;
+}
+.quizlist ol li a:hover {
+    color: #ccc;
 }
