@@ -26,3 +26,15 @@
     border-radius: 4px;
     padding: 2vw 4.5vw;
 }
+
+.auth .content form {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.auth .content form .buttons {
+    display: flex;
+    justify-content: center;
+    margin-top: 0.4rem;
+}
