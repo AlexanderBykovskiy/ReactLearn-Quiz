@@ -1,3 +1,28 @@
 .auth {
-    
+    display: flex;
+    flex-grow: 1;
+    flex-direction: column;
+
+    color: #efefef;
+
+    background: #012a1e;
+    background: -moz-linear-gradient(45deg, #012a1e 0%, #00737a 100%);
+    background: -webkit-linear-gradient(45deg, #012a1e 0%, #00737a 100%);
+    background: linear-gradient(45deg, #012a1e 0%, #00737a 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#012a1e', endColorstr='#00737a', GradientType=1);
+}
+
+.auth h1 {
+    text-align: center;
+}
+
+.auth .quizWrapper {
+    width: 30vw;
+    margin: 5vw auto;
+}
+
+.auth .content {
+    border: 1px solid #efefef;
+    border-radius: 4px;
+    padding: 2vw 4.5vw;
 }
