@@ -11,6 +11,7 @@ function validateEmail(email) {
 class Auth extends React.Component {
 
     state = {
+        isFormValid: false,
         formControls: {
             email: {
                 value: '',
@@ -42,11 +43,11 @@ class Auth extends React.Component {
     }
 
     handleSignIN = (e) => {
-
+        console.log('###', 'sign in');
     }
 
     handleSignUP = (e) => {
-
+        console.log('###', 'sign up');
     }
 
     handleSubmit = (e) => {
@@ -86,8 +87,14 @@ class Auth extends React.Component {
 
         formControls[controlName] = control;
 
+        let isFormValid = true;
+        Object.keys(formControls).forEach((name) => {
+            isFormValid = formControls[name].valid && isFormValid;
+        })
+
         this.setState({
-            formControls
+            formControls,
+            isFormValid
         });
     }
 
@@ -124,11 +131,13 @@ class Auth extends React.Component {
                                 <Button
                                     caption="Sign IN"
                                     onClickfunction={this.handleSignIN}
+                                    disabled={!this.state.isFormValid}
                                 />
                                 <Button
                                     type="primary"
                                     caption="Sign UP"
                                     onClickfunction={this.handleSignUP}
+                                    disabled={!this.state.isFormValid}
                                 />
                             </div>
                         </form>

@@ -35,19 +35,6 @@
     box-shadow: 3x 3px 5px #fff;
 }
 
-.button:disebled {
-    cursor: not-allowed;
-    box-shadow: 3x 3px 5px #f00;
-}
-
-.error {
-
-}
-
-.success {
-
-}
-
 .primary {
     background-color: #fff;
     color: #012a1e;
@@ -56,4 +43,11 @@
 .primary:hover {
     background: none;
     color: #fff;
+}
+
+.disabled, .disabled:hover {
+    cursor: not-allowed;
+    color: #aaa;
+    background-color: transparent;
+    border: 1px solid #aaa;
 }
